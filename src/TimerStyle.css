@@ -1,0 +1,54 @@
+#timer {
+
+    font-family: Arial, sans-serif; /* ניתן להחליף לגופנים אחרים */
+    color: #333; /* צבע הטקסט */
+    background-color: #f7f7f7; /* צבע רקע */
+
+}
+
+#timerContainer{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 20px; /* ניתן לשנות גודל פונט כרצונך */
+    font-weight: bold;
+    font-family: Arial, sans-serif; /* ניתן להחליף לגופנים אחרים */
+    color: #333; /* צבע הטקסט */
+    background-color: #f7f7f7; /* צבע רקע */
+    border: 2px solid #ccc; /* גבול */
+    border-radius: 10px; /* רינוע */
+    padding: 10px; /* מרווח בתוך האלמנט */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* צל */
+}
+
+
+@keyframes glow {
+    0% {
+        background-color: #f7f7f7;
+    }
+    100% {
+        background-color: #ff0000; /* הצבע האדום של לייב */
+    }
+}
+
+#timerText-Live{
+
+    font-family: Arial, sans-serif; /* ניתן להחליף לגופנים אחרים */
+    color: #333; /* צבע הטקסט */
+    animation: glow 0.5s ease-in-out infinite alternate;
+    border-radius: 8px;
+}
+
+#timerText-Round{
+
+    font-family: Arial, sans-serif; /* ניתן להחליף לגופנים אחרים */
+    color: #050404; /* צבע הטקסט */
+    background-color: #f1ecec;
+    border-radius: 8px;
+}
+
+
+
+
+
+

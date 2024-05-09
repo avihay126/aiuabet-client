@@ -1,0 +1,58 @@
+.log-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #9a9797;
+    border: 1px solid #050505;
+    border-radius: 8px;
+    padding: 20px;
+    width: 300px;
+    text-align: center;
+}
+
+.log-popup input {
+    display: block;
+    margin: 10px auto;
+    padding: 5px;
+    width: 80%;
+    border: 1px solid #030303;
+    border-radius: 8px;
+
+}
+
+.logButton{
+    display: block;
+    margin: 10px auto;
+    padding: 10px 20px;
+    background-color: yellow;
+    border: 1px solid #030303;
+    color: black;
+    font-weight: bold;
+    font-size: large;
+    border-radius: 8px;
+
+    cursor: pointer;
+}
+
+
+.log-popup button:hover {
+    background-color: #777774;
+}
+.log-popup button:disabled{
+    background-color: #fdfdfd;
+    cursor: default;
+    opacity: 0.1;
+}
+
+
+.close-button {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    border: none;
+    background: none;
+    color: black;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
