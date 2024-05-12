@@ -1,0 +1,115 @@
+.print-round-container {
+    width: 80%;
+    margin: 0 auto;
+    padding-top: 20px;
+}
+
+.print-round-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.print-round-caption {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.print-round-th {
+    background-color: #f2f2f2;
+    color: #333;
+    padding: 10px;
+    text-align: center;
+    font-size: large;
+    border-bottom: 3px solid #3d3c3c;
+}
+
+.print-round-td {
+    padding: 10px;
+    text-align: center;
+
+}
+
+.print-round-vs {
+    font-style: italic;
+    color: #777;
+}
+.print-round-row {
+    border-bottom: 1px solid #ccc;
+}
+
+
+.scroll-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #6b7177;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 24px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.scroll-to-top:hover {
+    background-color: rgba(0, 0, 0, 0.75);
+}
+
+.select-box {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px;
+    border: 2px solid #4b4f52;
+    border-radius: 5px;
+    background-color: #d2cccc;
+    color: #111111;
+    outline: none;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+}
+
+.select-box:hover,
+.select-box:focus {
+    border-color: rgba(253, 5, 5, 0.68);
+}
+
+
+.teamMatches{
+    border-collapse: collapse;
+
+
+
+
+}
+
+.teamMatches-container{
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 400px;
+    max-height: 100%;
+    overflow-y: auto;
+
+}
+
+.teamMatches-container::-webKit-scrollbar{
+    width: 8px;
+}
+.teamMatches-container::-webkit-scrollbar-track{
+    background: #e0dada;
+    border-radius: 8px;
+}
+.teamMatches-container::-webkit-scrollbar-thumb{
+    background: #333232;
+    border-radius: 8px;
+}
+.teamMatches-container::-webkit-scrollbar-thumb:hover{
+    background: #c50202;
+    border-radius: 8px;
+}
+
+

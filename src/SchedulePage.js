@@ -1,46 +1,46 @@
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import PrintRound from "./PrintRound";
+import "./PrintRoundStyle.css"
 
+function SchedulePage() {
+    const [matches, setMatches] = useState([]);
+    const [selectedRound, setSelectedRound] = useState(1);
 
-function SchedulePage(){
+    useEffect(() => {
+        axios.get("http://localhost:9124/get-schedule")
+            .then((response) => {
+                let rounds = Array.from({ length: 38 }, (_, i) => i + 1)
+                    .map(roundNumber => response.data.filter(match => match.round === roundNumber));
+                setMatches(rounds);
+            })
+            .catch(error => console.error("Error fetching schedule:", error));
+    }, []);
 
+    const handleRoundChange = (e) => {
+        setSelectedRound(parseInt(e.target.value));
+        document.getElementById(`round-${e.target.value}`).scrollIntoView({ behavior: 'smooth' });
+    };
 
-    const [matches,setMatches] = useState([]);
+    const scrollToTop = () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
 
-    useEffect(()=>{
-        axios.get("http://localhost:9124/get-schedule",undefined)
-            .then((response)=>{
-                debugger
-                let rounds = [];
-                for (let i = 0; i < 38; i++) {
-                    let currentRound = [];
-                    for (let j = 0; j < response.data.length; j++) {
-                        if(response.data[j].round == i+1){
-                            currentRound.push(response.data[j])
-                        }
-                    }
-                    rounds.push(currentRound);
-                }
-            setMatches(rounds);
-        })
-
-    },[])
-
-
-    return(
+    return (
         <div>
-            SchedulePage
+            <select className={"select-box"} value={selectedRound} onChange={handleRoundChange}>
+                {Array.from({ length: matches.length }, (_, i) => i + 1).map(roundNumber => (
+                    <option key={roundNumber} value={roundNumber}>Round {roundNumber}</option>
+                ))}
+            </select>
             {
-                matches.map((round,index)=>{
-                    return(
-                        <PrintRound round={round} roundNumber={index+1}/>
-                    )
-                })
+                matches.map((round, index) => (
+                    <PrintRound key={index} round={round} roundNumber={index + 1} id={`round-${index + 1}`} />
+                ))
             }
-
+            <button className="scroll-to-top" onClick={scrollToTop}>^</button>
         </div>
-    )
+    );
 }
 
 export default SchedulePage;

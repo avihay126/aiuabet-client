@@ -1,0 +1,54 @@
+.bigTable-container {
+    font-family: Arial, sans-serif;
+    overflow-x: auto;
+}
+
+.bigTable {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 17px;
+
+
+}
+.smallTable {
+    position: relative;
+    width: 50%;
+    border-collapse: collapse;
+    font-size: 17px;
+    border-right: 7px solid #333232;
+
+}
+
+th, td {
+    padding: 4px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+
+}
+
+th {
+    background-color:#f2f2f2;
+    color: #0c0c0c;
+}
+
+td {
+    background-color: #d7d4d4;
+}
+
+td:first-child {
+    font-weight: bold;
+}
+
+.teamName {
+    color: #0c0c0c;
+    text-decoration: none;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.teamName:hover {
+    text-decoration: underline;
+    color: #9a9797;
+}
+
+
