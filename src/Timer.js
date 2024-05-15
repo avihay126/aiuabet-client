@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import "./TimerStyle.css";
+import "./Styles/TimerStyle.css";
 
 
 function Timer({timer, inGame}){

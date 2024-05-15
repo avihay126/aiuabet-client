@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import PrintRound from "./PrintRound";
-import "./PrintRoundStyle.css"
+import "./Styles/PrintRoundStyle.css"
 
 function SchedulePage() {
     const [matches, setMatches] = useState([]);
@@ -23,12 +23,12 @@ function SchedulePage() {
     };
 
     const scrollToTop = () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        document.getElementById(`select-box`).scrollIntoView({ behavior: 'smooth' });
     };
 
     return (
-        <div>
-            <select className={"select-box"} value={selectedRound} onChange={handleRoundChange}>
+        <div id={"Schedule-page"}>
+            <select id={"select-box"} value={selectedRound} onChange={handleRoundChange}>
                 {Array.from({ length: matches.length }, (_, i) => i + 1).map(roundNumber => (
                     <option key={roundNumber} value={roundNumber}>Round {roundNumber}</option>
                 ))}

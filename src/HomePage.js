@@ -1,17 +1,17 @@
 import React from "react";
+import CurrentRoundComponent from "./CurrentRoundComponent";
+import BetsFormComponent from "./BetsFormComponent";
 
 
-class HomePage extends React.Component{
+function HomePage(props){
 
 
-    render() {
-        return(
-            <div>
-                homePage
-            </div>
-        )
-
-    }
+    return(
+        <div>
+            <CurrentRoundComponent bets={props.bets} updateBets={props.updateBets} matches={props.matches} inGame={props.inGame}/>
+            <BetsFormComponent bets={props.bets}/>
+        </div>
+    )
 
 }
 

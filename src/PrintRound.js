@@ -1,5 +1,5 @@
 import TeamGoals from "./TeamGoals";
-import "./PrintRoundStyle.css";
+import "./Styles/PrintRoundStyle.css";
 
 function PrintRound({ round, roundNumber , id }) {
     const { getTeamGoals } = TeamGoals();

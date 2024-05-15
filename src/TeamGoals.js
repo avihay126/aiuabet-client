@@ -2,7 +2,6 @@ function TeamGoals(){
 
 
     const getTeamGoals = (match,home) =>{
-        debugger;
         let homeGoals = 0
         let awayGoals = 0
         for (let i = 0; i < match.goals.length; i++) {

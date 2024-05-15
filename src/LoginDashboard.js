@@ -2,7 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import RegisterDashboard from "./RegisterDashboard";
 import UserValidInputs from "./UserValidInputs";
-import "./SignDashboard.css"; // קובץ ה-CSS החיצוני
+import "./Styles/SignDashboard.css"; // קובץ ה-CSS החיצוני
 
 function LoginDashboard(props){
 
@@ -19,7 +19,8 @@ function LoginDashboard(props){
             },
         }).then((response)=>{
             if (response.data.success){
-                props.setSecret(response.data.secret)
+                props.setSecret(response.data.user.secret)
+                handleClose()
             }else {
                 setPassword("")
                 setEmail("")

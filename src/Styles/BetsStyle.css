@@ -1,0 +1,54 @@
+#main-bets-container{
+    position: absolute;
+    right: 1%;
+    width: 20%;
+    top: 15%;
+    background-image: linear-gradient(to right, #989694 , #f6f3ef, #989694);
+    height: 70%;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.75);
+    border: 2px solid black;
+}
+
+
+
+#bets-container{
+    max-height: 85%;
+    overflow-y: auto;
+    overflow-x: auto;
+}
+
+
+#bets-container::-webKit-scrollbar{
+    width: 8px;
+}
+#bets-container::-webkit-scrollbar-track{
+    background: #e0dada;
+    border-radius: 8px;
+}
+#bets-container::-webkit-scrollbar-thumb{
+    background: #333232;
+    border-radius: 8px;
+}
+#bets-container::-webkit-scrollbar-thumb:hover{
+    background: #c50202;
+    border-radius: 8px;
+}
+
+
+
+.bet{
+    background-color: black;
+    color: white;
+    border-radius: 5px;
+    border: 1px solid white;
+    margin-bottom: 3px;
+    padding: 10px;
+}
+
+.chosen-bet{
+    font-weight: bold;
+    padding: 10px;
+    text-align: left;
+    font-size: 18px;
+}

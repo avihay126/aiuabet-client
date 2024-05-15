@@ -1,7 +1,37 @@
+#Schedule-page{
+    position: absolute;
+    width: 100%;
+    overflow-y: auto;
+    overflow-x: auto;
+    max-height: 92%;
+}
+
+
+#Schedule-page::-webKit-scrollbar{
+    width: 15px;
+}
+#Schedule-page::-webkit-scrollbar-track{
+    background: #e0dada;
+    border-radius: 8px;
+
+}
+#Schedule-page::-webkit-scrollbar-thumb{
+    background: #333232;
+    border-radius: 8px;
+}
+#Schedule-page::-webkit-scrollbar-thumb:hover{
+    background: #c50202;
+    border-radius: 8px;
+}
+
+
+
 .print-round-container {
     width: 80%;
     margin: 0 auto;
     padding-top: 20px;
+    background-repeat: repeat-y;
+
 }
 
 .print-round-table {
@@ -27,7 +57,6 @@
 .print-round-td {
     padding: 10px;
     text-align: center;
-
 }
 
 .print-round-vs {
@@ -58,7 +87,7 @@
     background-color: rgba(0, 0, 0, 0.75);
 }
 
-.select-box {
+#select-box {
     font-family: Arial, sans-serif;
     font-size: 16px;
     font-weight: bold;
@@ -72,27 +101,35 @@
     transition: border-color 0.3s ease;
 }
 
-.select-box:hover,
-.select-box:focus {
+#select-box:hover,
+#select-box:focus {
     border-color: rgba(253, 5, 5, 0.68);
 }
 
 
+
+
+
+
+
+
+
+
 .teamMatches{
     border-collapse: collapse;
-
-
-
-
 }
 
 .teamMatches-container{
     position: absolute;
-    top: 0;
-    left: 50%;
-    width: 400px;
-    max-height: 100%;
+    top: 7%;
+    left: 51%;
+    width: 375px;
+    max-height: 91%;
     overflow-y: auto;
+    overflow-x: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.75);
+    border: 2px solid black;
 
 }
 
@@ -113,3 +150,55 @@
 }
 
 
+
+
+
+
+#currentRound-container{
+    position: absolute;
+    top: 15%;
+    right: 23%;
+    background-image: linear-gradient(to right, #989694 , #f6f3ef, #989694);
+    width: 50%;
+    height: 70%;
+
+    overflow-y: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.75);
+    border: 2px solid black;
+
+
+
+
+}
+
+
+#currentRound-table{
+    border-collapse: collapse;
+    width: 100%;
+    height: 100%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.75);
+
+}
+
+
+.ratios{
+    cursor: pointer;
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.ratios:hover{
+    background-image: linear-gradient(to right, #989694 , #f6f3ef, #989694);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.75);
+}
+
+.ratios:active{
+    background-color: red;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.75);
+}
+
+
+.inGame{
+    border-radius: 10px;
+}

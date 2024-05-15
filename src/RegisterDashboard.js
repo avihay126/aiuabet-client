@@ -2,7 +2,7 @@ import {useState} from "react";
 import axios from "axios";
 import Cookies from "universal-cookie";
 import UserValidInputs from "./UserValidInputs";
-import "./SignDashboard.css";
+import "./Styles/SignDashboard.css";
 
 
 function RegisterDashboard(props){
@@ -31,8 +31,8 @@ function RegisterDashboard(props){
             },
         }).then((response)=>{
             if (response.data.success){
-                debugger;
-                props.setSecret(response.data.secret);
+                props.setSecret(response.data.user.secret);
+                handleClose()
             }else {
                 setError(response.data.errorCode)
                 setUsername("")

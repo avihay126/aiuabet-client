@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import './BarComponent.css';
+import './Styles/BarComponent.css';
 import Timer from "./Timer"; // import the CSS file
 import { useNavigate } from 'react-router-dom';
 
-function BarComponent({ openLogin, openRegister , timer , inGame }) {
+function BarComponent({user,logOut,loggedIn, openLogin, openRegister , timer , inGame }) {
     const [selectedItem, setSelectedItem] = useState(null);
     const navigate = useNavigate();
 
@@ -23,11 +23,22 @@ function BarComponent({ openLogin, openRegister , timer , inGame }) {
     return (
         <div className="bar">
             <div  id={"mainBar"} >
-                <button className="buttonLog" onClick={handleSignUpClick} >Sign Up</button>
-                <button className="buttonLog" onClick={handleSignInClick}>Sign In</button>
+                {
+                    loggedIn ?
+                        (<div>
+                            <button className="userDetails">{user.username}</button>
+                            <button className="buttonLog" onClick={()=>logOut()} >Log Out</button>
+                        </div>)
+                        :
+                        (<div>
+                            <button className="buttonLog" onClick={handleSignUpClick} >Sign Up</button>
+                            <button className="buttonLog" onClick={handleSignInClick}>Sign In</button>
+                        </div>)
+                }
+
             </div>
             <div id={"secondBar"} >
-                <BarItem onClick={() => handleClick("Main")} selected={selectedItem === "Main"}>Main</BarItem>
+                <BarItem onClick={() => handleClick("")} selected={selectedItem === ""}>Main</BarItem>
                 <BarItem onClick={() => handleClick("Statistics")} selected={selectedItem === "Statistics"}>Statistics</BarItem>
                 <BarItem onClick={() => handleClick("Table")} selected={selectedItem === "Table"}>Table</BarItem>
                 <BarItem onClick={() => handleClick("Schedule")} selected={selectedItem === "Schedule"}>Schedule</BarItem>

@@ -1,5 +1,5 @@
 
-import "./PrintRoundStyle.css";
+import "./Styles/PrintRoundStyle.css";
 import TeamGoals from "./TeamGoals";
 import {useEffect} from "react";
 

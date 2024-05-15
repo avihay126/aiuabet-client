@@ -1,5 +1,13 @@
 .App {
+  position: fixed;
   text-align: center;
+  height: 100%;
+  width: 100%;
+
+  background-image: linear-gradient(to right, #989694 , #f6f3ef, #989694);
+
+
+
 }
 
 
@@ -41,3 +49,23 @@
     transform: rotate(360deg);
   }
 }
+
+
+
+
+/*.match-table {*/
+/*  width: 100%;*/
+/*  border-collapse: collapse;*/
+/*}*/
+
+/*.match-table th, .match-table td {*/
+/*  border: 1px solid #dddddd;*/
+/*  text-align: center;*/
+/*  padding: 8px;*/
+/*}*/
+
+/*.match-table th {*/
+/*  background-color: #f2f2f2;*/
+/*}*/
+
+

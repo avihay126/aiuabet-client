@@ -1,7 +1,9 @@
 import React, {useEffect, useState} from 'react';
-import './TablePageStyle.css';
+import './Styles/TablePageStyle.css';
 import axios from "axios";
 import TeamMatchesComponent from "./TeamMatchesComponent";
+import TeamNameComponent from "./TeamNameComponent";
+import PrintTeamPlayers from "./PrintTeamPlayers";
 
 
 function TableComponent(props) {
@@ -57,49 +59,55 @@ function TableComponent(props) {
     });
 
     return (
-        <div style={{ position: "relative" }}>
-                    <table className={teamSelected == null? "bigTable": "smallTable"}>
-                        <thead>
-                        <tr>
-                            <th>P.</th>
-                            <th>Team</th>
-                            <th>Games</th>
-                            <th>Wins</th>
-                            <th>Draws</th>
-                            <th>Losses</th>
-                            <th>Goals</th>
-                            <th>Conceded</th>
-                            <th>Difference</th>
-                            <th>Points</th>
+        <div>
+            <div className={teamSelected == null? "bigTable-container": "smallTable-container"} >
+                <table className={teamSelected == null? "bigTable": "smallTable"}>
+                    <thead>
+                    <tr>
+                        <th>P.</th>
+                        <th>Team</th>
+                        <th>Games</th>
+                        <th>Wins</th>
+                        <th>Draws</th>
+                        <th>Losses</th>
+                        <th>Goals</th>
+                        <th>Conceded</th>
+                        <th>Difference</th>
+                        <th>Points</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {sortedTeams.map((team, index) => (
+                        <tr key={index}>
+                            <td>{index+1}.</td>
+                            <td className={"teamName"} onClick={()=>{setTeamSelected(team)}} >{team.name}</td>
+                            <td>{team.teamStatistics.gamesPlayed}</td>
+                            <td>{team.teamStatistics.wins}</td>
+                            <td>{team.teamStatistics.draws}</td>
+                            <td>{team.teamStatistics.losses}</td>
+                            <td>{team.teamStatistics.goalsScored}</td>
+                            <td>{team.teamStatistics.goalsConceded}</td>
+                            <td>{team.teamStatistics.goalsScored - team.teamStatistics.goalsConceded}</td>
+                            <td>{team.teamStatistics.points}</td>
                         </tr>
-                        </thead>
-                        <tbody>
-                        {sortedTeams.map((team, index) => (
-                            <tr key={index}>
-                                <td>{index+1}.</td>
-                                <td className={"teamName"} onClick={()=>{setTeamSelected(team)}} >{team.name}</td>
-                                <td>{team.teamStatistics.gamesPlayed}</td>
-                                <td>{team.teamStatistics.wins}</td>
-                                <td>{team.teamStatistics.draws}</td>
-                                <td>{team.teamStatistics.losses}</td>
-                                <td>{team.teamStatistics.goalsScored}</td>
-                                <td>{team.teamStatistics.goalsConceded}</td>
-                                <td>{team.teamStatistics.goalsScored - team.teamStatistics.goalsConceded}</td>
-                                <td>{team.teamStatistics.points}</td>
-                            </tr>
-                        ))}
-                        </tbody>
-                    </table>
-            {teamSelected != null && (
+                    ))}
+                    </tbody>
+                </table>
 
+            </div>
+            {teamSelected != null && (
+                <div>
                     <TeamMatchesComponent matches={teamMatches} setMatches={setTeamMatches}/>
+                    <div className={"teamName-players-container"}>
+                        <TeamNameComponent teamName={teamSelected.name}/>
+                        <PrintTeamPlayers players={teamPlayers}/>
+                    </div>
+                </div>
+
 
             )}
-
-
-
-
         </div>
+
     );
 }
 
