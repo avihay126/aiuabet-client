@@ -1,18 +1,53 @@
 import "./Styles/BetsStyle.css"
 import BetComponent from "./BetComponent";
 import {useState} from "react";
+import axios from "axios";
 
 
-function BetsFormComponent({bets}){
+function BetsFormComponent({bets ,updateBets, loggedIn, inGame,user,updateState}){
 
 
     const [inputSum, setInputSum] = useState(0);
 
+
+
     const updateInputSum = (event) =>{
         const value = event.target.value;
         if (/^\d+$/.test(value) || value === '') {
-            setInputSum(value);
+            if(value <= 10000){
+                setInputSum(value);
+            }
+
         }
+    }
+    const handleButtonDisabled =() =>{
+        return !loggedIn || inputSum < 10 || inGame
+    }
+
+    const sendBet =()=>{
+
+        if (user.balance >= inputSum){
+            axios.post("http://localhost:9124/get-user-bet", {
+                ownerSecret: user.secret,
+                bets: bets,
+                moneyBet:inputSum,
+                round: bets[0].match.round
+            })
+                .then((response)=>{
+                    if(response.data.success){
+                        debugger
+                        setInputSum(0);
+                        updateState("user",response.data.user);
+                        updateState("bets",[])
+                    }else {
+                        alert("You have no enough money")
+                    }
+            })
+        }else {
+            alert("You have no enough money")
+            updateState("bets",[])
+        }
+
     }
 
 
@@ -34,7 +69,8 @@ function BetsFormComponent({bets}){
                     bets.map((bet)=>{
 
                         return(
-                            <BetComponent bet={bet}/>
+                            <BetComponent bet={bet} updateBets={updateBets}/>
+
                         )
                     })
                 }
@@ -42,17 +78,23 @@ function BetsFormComponent({bets}){
             </div>
             {
                 bets.length > 0 &&
-                <div>
-
-                    <div>
+                <div id={"bet-summary"}>
+                    <div id={"total-ratio"}>
                         Total win ratio: {getTotalRatio()}
                     </div>
-                    <input size={1} value={inputSum}   onChange={(event)=>updateInputSum(event)}/>
-                    <span>$</span>
+                    <div>
+                        <input  id={"bet-input"} disabled={inGame} size={1} value={inputSum}   onChange={(event)=>updateInputSum(event)}/>$
+                        <button id={"bet-button"} disabled={handleButtonDisabled()} onClick={()=>sendBet()} >BET</button>
+                        {
+                            !loggedIn && <>sign for bet</>
+                        }
+                    </div>
+
+
                     {
                         inputSum != "" &&
                         <div>
-                            Expected winning amount: {(getTotalRatio()*inputSum).toFixed(2)}$
+                            Expected winning: {(getTotalRatio()*inputSum).toFixed(2)}$
                         </div>
                     }
                 </div>

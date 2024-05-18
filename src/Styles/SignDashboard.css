@@ -3,10 +3,10 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #9a9797;
+    background-color: #7e7c7c;
     border: 1px solid #050505;
     border-radius: 8px;
-    padding: 20px;
+    padding: 10px;
     width: 300px;
     text-align: center;
     z-index: 9999;
@@ -50,12 +50,14 @@
 
 
 .close-button {
-    position: absolute;
-    top: 5px;
-    right: 5px;
+    position: relative;
+    float: right;
+    margin-left: auto;
+    margin-right: 0;
     border: none;
     background: none;
-    color: black;
+    color: white;
     font-size: 1.5rem;
     cursor: pointer;
 }
+

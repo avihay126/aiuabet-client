@@ -13,9 +13,10 @@
 
 
 #bets-container{
-    max-height: 85%;
+    max-height: 75%;
     overflow-y: auto;
     overflow-x: auto;
+    border-radius: 10px;
 }
 
 
@@ -38,6 +39,7 @@
 
 
 .bet{
+
     background-color: black;
     color: white;
     border-radius: 5px;
@@ -51,4 +53,42 @@
     padding: 10px;
     text-align: left;
     font-size: 18px;
+}
+
+
+#bet-summary{
+    position: absolute;
+    bottom: 0;
+    width: 86%;
+    background-image: linear-gradient(to bottom, #f6f3ef, #e7e5e1,#f6f3ef );
+    border-radius: 10px;
+    padding: 20px;
+    border: 2px solid black;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.75);
+
+}
+
+
+#total-ratio{
+    text-align: left;
+    font-weight: bold;
+    font-size: 18px;
+    font-style: italic;
+}
+
+#bet-input{
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: bolder;
+
+}
+
+#bet-button{
+    border-radius: 8px;
+    margin-left: 20px;
+    margin-right: 5px;
+    background: yellow;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3) ;
 }

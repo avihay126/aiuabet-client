@@ -27,10 +27,27 @@ class App extends React.Component {
         bets:[]
     };
 
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (this.state.time == 90 && prevState.time != this.state.time){
+            axios.get("http://localhost:9124/get-bets-result")
+                .then((response)=>{
+                    this.setState({
+                        user: response.data
+                    })
+                })
+        }
+
+        if (this.state.time == 0 && this.state.inGame && this.state.bets.length >0){
+            this.setState({
+                bets:[]
+            })
+        }
+    }
+
     setSecret  = (secret) =>{
         const cookies = new Cookies(null, {path:'/'});
         cookies.set('secret',secret);
-        debugger
         this.getUserBySecret()
     }
 
@@ -102,26 +119,29 @@ class App extends React.Component {
 
     updateBets =(bet)=>{
         let exist = false
-        for (let i = 0; i < this.state.bets.length; i++) {
-            let currentBet = this.state.bets[i];
-            if (currentBet.match.id === bet.match.id && currentBet.userBet === bet.userBet){
-                this.setState(prevState => ({
-                    bets: prevState.bets.filter(bet2 => !(bet2.match.id === bet.match.id && bet2.userBet === bet.userBet))
-                }));
-                exist = true
+        if (!this.state.inGame){
+            for (let i = 0; i < this.state.bets.length; i++) {
+                let currentBet = this.state.bets[i];
+                if (currentBet.match.id === bet.match.id && currentBet.userBet === bet.userBet){
+                    this.setState(prevState => ({
+                        bets: prevState.bets.filter(bet2 => !(bet2.match.id === bet.match.id && bet2.userBet === bet.userBet))
+                    }));
+                    exist = true
 
-            }else if (currentBet.match.id === bet.match.id){
-                this.setState(prevState => ({
-                    bets: prevState.bets.filter(bet2 => !(bet2.match.id === currentBet.match.id && bet2.userBet === currentBet.userBet))
-                }));
-                break
+                }else if (currentBet.match.id === bet.match.id){
+                    this.setState(prevState => ({
+                        bets: prevState.bets.filter(bet2 => !(bet2.match.id === currentBet.match.id && bet2.userBet === currentBet.userBet))
+                    }));
+                    break
+                }
+            }
+            if (!exist){
+                this.setState(prevState=>({
+                    bets: [...prevState.bets,bet]
+                }))
             }
         }
-        if (!exist){
-            this.setState(prevState=>({
-                bets: [...prevState.bets,bet]
-            }))
-        }
+
 
     }
 
@@ -137,6 +157,7 @@ class App extends React.Component {
         const cookies = new Cookies(null, {path:'/'});
         cookies.remove("secret")
         this.updateState("loggedIn", false)
+        this.updateState("user", null)
     }
 
     render() {
@@ -150,7 +171,7 @@ class App extends React.Component {
                         <Routes>
                             <Route path={"/Table"} element={<TableComponent teams={this.state.teams}/>}/>
                             <Route path={"/Schedule"} element={<SchedulePage/>}/>
-                            <Route path={"/"} element={<HomePage bets={this.state.bets} updateBets={this.updateBets} matches={this.state.currentRound} inGame={this.state.inGame}/>}/>
+                            <Route path={"/"} element={<HomePage teams={this.state.teams} updateState={this.updateState} user={this.state.user} inGame={this.state.inGame} loggedIn={this.state.loggedIn} bets={this.state.bets} updateBets={this.updateBets} matches={this.state.currentRound} inGame={this.state.inGame}/>}/>
                         </Routes>
                 </BrowserRouter>
             </div>

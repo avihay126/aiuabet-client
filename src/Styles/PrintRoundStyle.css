@@ -157,7 +157,7 @@
 #currentRound-container{
     position: absolute;
     top: 15%;
-    right: 23%;
+    right: 22%;
     background-image: linear-gradient(to right, #989694 , #f6f3ef, #989694);
     width: 50%;
     height: 70%;
@@ -186,11 +186,15 @@
     cursor: pointer;
     border-radius: 10px;
     transition: background-color 0.3s ease;
+
 }
 
 .ratios:hover{
     background-image: linear-gradient(to right, #989694 , #f6f3ef, #989694);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.75);
+
+
+
 }
 
 .ratios:active{

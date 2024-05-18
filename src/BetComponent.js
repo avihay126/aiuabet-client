@@ -1,7 +1,7 @@
 
 
 
-function BetComponent({bet}){
+function BetComponent({bet, updateBets}){
     const match = bet.match
     const userBet = bet.userBet;
     const ratio= bet.ratio;
@@ -18,7 +18,9 @@ function BetComponent({bet}){
 
     return(
             <div className={"bet"}>
+                <button className="close-button" onClick={()=>updateBets({match:match, userBet:userBet,ratio:ratio})} >X</button>
                 <div className={"chosen-bet"}>
+
                     {teamNameBet(match,userBet)} - {ratio}
                 </div>
                 <div className={"match-bet"}>

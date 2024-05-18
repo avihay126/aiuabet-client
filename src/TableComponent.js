@@ -4,6 +4,11 @@ import axios from "axios";
 import TeamMatchesComponent from "./TeamMatchesComponent";
 import TeamNameComponent from "./TeamNameComponent";
 import PrintTeamPlayers from "./PrintTeamPlayers";
+import sortTeamForTable from "./SortTeamForTable";
+import SortTeamForTable from "./SortTeamForTable";
+
+
+
 
 
 function TableComponent(props) {
@@ -11,6 +16,9 @@ function TableComponent(props) {
     const [teamSelected, setTeamSelected] = useState(null);
     const[teamMatches, setTeamMatches] = useState([]);
     const[ teamPlayers, setTeamPlayers] = useState([]);
+    const {sortTeams} = SortTeamForTable();
+
+
 
 
     useEffect(()=>{
@@ -48,15 +56,9 @@ function TableComponent(props) {
 
     }
 
-    const sortedTeams = props.teams.sort((a, b) => {
-        if (a.teamStatistics.points !== b.teamStatistics.points) {
-            return b.teamStatistics.points - a.teamStatistics.points;
-        }
-        if ((a.teamStatistics.goalsScored - a.teamStatistics.goalsConceded) !== (b.teamStatistics.goalsScored - b.teamStatistics.goalsConceded)) {
-            return (b.teamStatistics.goalsScored - b.teamStatistics.goalsConceded) - (a.teamStatistics.goalsScored - a.teamStatistics.goalsConceded);
-        }
-        return a.name.localeCompare(b.name);
-    });
+
+
+
 
     return (
         <div>
@@ -77,7 +79,7 @@ function TableComponent(props) {
                     </tr>
                     </thead>
                     <tbody>
-                    {sortedTeams.map((team, index) => (
+                    {sortTeams(props.teams).map((team, index) => (
                         <tr key={index}>
                             <td>{index+1}.</td>
                             <td className={"teamName"} onClick={()=>{setTeamSelected(team)}} >{team.name}</td>
