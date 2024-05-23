@@ -26,7 +26,7 @@ function BarComponent({user,logOut,loggedIn, openLogin, openRegister , timer , i
                 {
                     loggedIn ?
                         (<div>
-                            <button className="userDetails">{user.balance}</button>
+                            <button className="userDetails">{user.username}</button>
                             <button className="buttonLog" onClick={()=>logOut()} >Log Out</button>
                         </div>)
                         :

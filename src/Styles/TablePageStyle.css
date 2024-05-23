@@ -2,10 +2,10 @@
     font-family: Arial, sans-serif;
     overflow-x: auto;
     position: absolute;
-    width: 96%;
-    left: 2%;
+    width: 98%;
+    left: 1%;
     top: 7%;
-    height: 90%;
+    height: 91%;
     border-radius: 10px;
     overflow-y: auto;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.75);
@@ -20,7 +20,7 @@
     position: absolute;
     width: 50%;
     top: 7%;
-    left: 5px;
+    left: 0.5%;
     height: 91%;
     border-radius: 10px;
     overflow-y: auto;
@@ -29,7 +29,7 @@
 }
 
 
-.minTable-container {
+.main-minTable-container {
     font-family: Arial, sans-serif;
     position: absolute;
     width: 25%;

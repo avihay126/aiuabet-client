@@ -11,6 +11,8 @@ import BarComponent from "./BarComponent";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import SchedulePage from "./SchedulePage";
 import HomePage from "./HomePage";
+import RulesPage from "./RulesPage";
+import StatisticsPage from "./StatisticsPage";
 
 axios.defaults.withCredentials = true
 
@@ -171,7 +173,17 @@ class App extends React.Component {
                         <Routes>
                             <Route path={"/Table"} element={<TableComponent teams={this.state.teams}/>}/>
                             <Route path={"/Schedule"} element={<SchedulePage/>}/>
-                            <Route path={"/"} element={<HomePage teams={this.state.teams} updateState={this.updateState} user={this.state.user} inGame={this.state.inGame} loggedIn={this.state.loggedIn} bets={this.state.bets} updateBets={this.updateBets} matches={this.state.currentRound} inGame={this.state.inGame}/>}/>
+                            <Route path={"/"} element={<HomePage teams={this.state.teams}
+                                                                 updateState={this.updateState}
+                                                                 user={this.state.user}
+                                                                 inGame={this.state.inGame}
+                                                                 loggedIn={this.state.loggedIn}
+                                                                 bets={this.state.bets}
+                                                                 updateBets={this.updateBets}
+                                                                 matches={this.state.currentRound}
+                                                                 inGame={this.state.inGame}/>}/>
+                            <Route path={"/GameRules"} element={<RulesPage/>}/>
+                            <Route path={"/Statistics"} element={<StatisticsPage teams={this.state.teams}/>}/>
                         </Routes>
                 </BrowserRouter>
             </div>

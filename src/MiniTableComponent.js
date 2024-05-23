@@ -7,7 +7,7 @@ function MiniTableComponent(props){
     const {sortTeams} = SortTeamForTable()
 
     return(
-            <div className={"minTable-container"} >
+            <div  >
                 <table className={"minTable"}>
                     <thead>
                     <tr>

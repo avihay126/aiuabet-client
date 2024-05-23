@@ -11,7 +11,10 @@ function HomePage(props){
         <div>
             <CurrentRoundComponent bets={props.bets} updateBets={props.updateBets} matches={props.matches} inGame={props.inGame}/>
             <BetsFormComponent updateState={props.updateState} user={props.user} inGame={props.inGame} loggedIn={props.loggedIn} bets={props.bets} updateBets={props.updateBets}/>
-            <MiniTableComponent teams={props.teams}/>
+            <div className={"main-minTable-container"}>
+                <MiniTableComponent teams={props.teams}/>
+            </div>
+
         </div>
     )
 
