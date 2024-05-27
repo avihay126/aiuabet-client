@@ -2,22 +2,23 @@ import "./Styles/BetsStyle.css"
 import BetComponent from "./BetComponent";
 import {useState} from "react";
 import axios from "axios";
+import ValidInputSum from "./ValidInputSum";
+import BetDetailsComponent from "./BetDetailsComponent";
 
 
 function BetsFormComponent({bets ,updateBets, loggedIn, inGame,user,updateState}){
 
 
     const [inputSum, setInputSum] = useState(0);
+    const {validInputSum} = ValidInputSum();
+    const {getTotalRatio} = BetDetailsComponent();
+
 
 
 
     const updateInputSum = (event) =>{
-        const value = event.target.value;
-        if (/^\d+$/.test(value) || value === '') {
-            if(value <= 10000){
-                setInputSum(value);
-            }
-
+        if (validInputSum(event)){
+            setInputSum(event.target.value)
         }
     }
     const handleButtonDisabled =() =>{
@@ -52,13 +53,7 @@ function BetsFormComponent({bets ,updateBets, loggedIn, inGame,user,updateState}
 
 
 
-    const getTotalRatio = ()=>{
-        let ratio = 1;
-        for (let i = 0; i < bets.length; i++) {
-            ratio *= bets[i].ratio;
-        }
-        return ratio.toFixed(2);
-    }
+
 
 
     return(
@@ -80,7 +75,7 @@ function BetsFormComponent({bets ,updateBets, loggedIn, inGame,user,updateState}
                 bets.length > 0 &&
                 <div id={"bet-summary"}>
                     <div id={"total-ratio"}>
-                        Total win ratio: {getTotalRatio()}
+                        Total win ratio: {getTotalRatio(bets)}
                     </div>
                     <div>
                         <input  id={"bet-input"} disabled={inGame} size={1} value={inputSum}   onChange={(event)=>updateInputSum(event)}/>$
@@ -94,7 +89,7 @@ function BetsFormComponent({bets ,updateBets, loggedIn, inGame,user,updateState}
                     {
                         inputSum != "" &&
                         <div>
-                            Expected winning: {(getTotalRatio()*inputSum).toFixed(2)}$
+                            Expected winning: {(getTotalRatio(bets)*inputSum).toFixed(2)}$
                         </div>
                     }
                 </div>

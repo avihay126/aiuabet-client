@@ -34,7 +34,7 @@
     font-family: Arial, sans-serif;
     position: absolute;
     width: 25%;
-    top: 15%;
+    top: 18%;
     left: 1%;
     height: 80%;
     border-radius: 10px;
@@ -47,7 +47,7 @@
     font-family: Arial, sans-serif;
     position: absolute;
     width: 25%;
-    top: 15%;
+    top: 18%;
     right: 1%;
     height: 80%;
     border-radius: 10px;
@@ -63,24 +63,24 @@
     font-family: "Agency FB";
     color: red;
     position: absolute;
-    font-style: italic;
-    border-radius: 10px;
-    background-color: transparent;
-
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 #home-table-title{
-    top: 8%;
+    top: 10%;
     left: 1%;
+    transform: skew(-10deg);
 }
 
 
 #away-table-title{
-    top: 8%;
+    top: 10%;
     right: 1%;
+    transform: skew(10deg);
 }
 
 #topScorer-title{
     width: 100%;
     top: 23%;
+    font-style: italic;
 }

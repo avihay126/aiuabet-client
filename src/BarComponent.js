@@ -7,6 +7,8 @@ function BarComponent({user,logOut,loggedIn, openLogin, openRegister , timer , i
     const [selectedItem, setSelectedItem] = useState(null);
     const navigate = useNavigate();
 
+    const aiuaImage = require("C:\\Users\\DELL\\WebstormProjects\\aiuabet-client\\src\\Styles\\aiuabetlogo.jpg")
+
     const handleClick = (item) => {
         setSelectedItem(item === selectedItem ? null : item);
         navigate(`/${item}`)
@@ -20,14 +22,23 @@ function BarComponent({user,logOut,loggedIn, openLogin, openRegister , timer , i
         openLogin();
     };
 
+    const handleLogOutClick = () => {
+        logOut();
+        navigate("/")
+    };
+    const handleProfileClick = () => {
+        navigate("/MyProfile")
+    };
+
     return (
         <div className="bar">
+            <img src={aiuaImage} alt="תמונה"/>
             <div  id={"mainBar"} >
                 {
                     loggedIn ?
                         (<div>
-                            <button className="userDetails">{user.username}</button>
-                            <button className="buttonLog" onClick={()=>logOut()} >Log Out</button>
+                            <button className="userDetails" onClick={()=>handleProfileClick()}>{user.username[0]}</button>
+                            <button className="buttonLog" onClick={()=>handleLogOutClick()} >Log Out</button>
                         </div>)
                         :
                         (<div>

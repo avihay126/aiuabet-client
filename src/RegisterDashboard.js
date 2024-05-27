@@ -11,15 +11,10 @@ function RegisterDashboard(props){
     const [email,setEmail] = useState("")
     const [password,setPassword] = useState("")
     const [error,setError] = useState(-1)
-    const {correctPassword, correctEmail} = UserValidInputs();
+    const {correctInputs} = UserValidInputs();
 
 
-    const correctUsername = () =>{
-        return username.length>=5 && /[A-Z]/.test(username.charAt(0))
-    }
-    const correctInputs = ()=>{
-        return correctUsername() && correctEmail(email) &&correctPassword(password)
-    }
+
 
     const register = () =>{
         debugger;
@@ -65,7 +60,7 @@ function RegisterDashboard(props){
                 <input placeholder={"Username"} value={username} onChange={(event) => {setUsername(event.target.value)}}/>
                 <input placeholder={"Email"} type={"email"} value={email} onChange={(event) => {setEmail(event.target.value)}}/>
                 <input placeholder={"Password"}  type={"password"} value={password} onChange={(event) => {setPassword(event.target.value)}}/>
-                <button className={"logButton"} onClick={register} disabled={!correctInputs()}>Sign Up</button>
+                <button className={"logButton"} onClick={register} disabled={!correctInputs(email,password,username)}>Sign Up</button>
 
             </div>
 

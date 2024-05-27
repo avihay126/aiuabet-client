@@ -1,4 +1,4 @@
-
+import BetDetailsComponent from "./BetDetailsComponent";
 
 
 function BetComponent({bet, updateBets}){
@@ -6,15 +6,9 @@ function BetComponent({bet, updateBets}){
     const userBet = bet.userBet;
     const ratio= bet.ratio;
 
-    const teamNameBet=(match,userBet)=>{
-        let team = match.homeTeam.name;
-        if (userBet===2){
-            team = match.awayTeam.name;
-        }else if(userBet===0){
-            team ="Draw"
-        }
-        return team
-    }
+    const {teamNameBet} = BetDetailsComponent()
+
+
 
     return(
             <div className={"bet"}>

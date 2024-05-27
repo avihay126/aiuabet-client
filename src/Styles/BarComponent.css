@@ -6,6 +6,8 @@
     padding: 20px;
     position: sticky;
     top: 0;
+    height: 3%;
+
 
 }
 
@@ -20,33 +22,45 @@
     display: flex;
     align-items: center;
     position: absolute;
-    left: 20px;
+    left: 40px;
 
 }
 .userDetails{
-    background-color: #0059ff;
+    background-color: #7c7c7c;
+    color: white;
     margin-right: 10px;
     font-size: large;
     font-weight: bold;
     cursor: pointer;
-    border-radius: 8px;
+    border-radius: 15px;
+    border: 1px solid white;
+}
+
+.userDetails:hover{
+    background-color: white;
+    color: #7c7c7c;
 }
 
 .buttonLog {
     background-color: yellow;
     margin-right: 10px;
-    font-size: large;
+    font-size: larger;
     font-weight: bold;
     cursor: pointer;
     border-radius: 8px;
+    padding: 10px;
 
+}
+
+.buttonLog:hover{
+    background-color: #a19a05;
 }
 
 .item {
     cursor: pointer;
     margin-left: 20px;
     font-weight: bold;
-    font-size: large;
+    font-size: x-large;
     border-radius: 8px;
 }
 

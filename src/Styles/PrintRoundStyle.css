@@ -31,6 +31,7 @@
     margin: 0 auto;
     padding-top: 4%;
     background-repeat: repeat-y;
+    font-size: larger;
 
 }
 
@@ -121,10 +122,10 @@
 
 .teamMatches-container{
     position: absolute;
-    top: 7%;
+    top: 9%;
     left: 51%;
     width: 375px;
-    max-height: 91%;
+    max-height: 90%;
     overflow-y: auto;
     overflow-x: auto;
     border-radius: 10px;

@@ -7,7 +7,14 @@ function UserValidInputs(){
         return password.length>=8 && /[A-Z]/.test(password.charAt(0)) && /\d/.test(password)
     }
 
-    return{correctEmail,correctPassword};
+    const correctUsername = (username) =>{
+        return username.length>=5 && /[A-Z]/.test(username.charAt(0))
+    }
+    const correctInputs = (email,password,username)=>{
+        return correctUsername(username) && correctEmail(email) &&correctPassword(password)
+    }
+
+    return{correctEmail,correctPassword,correctUsername,correctInputs};
 
 }
 

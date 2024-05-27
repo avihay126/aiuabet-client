@@ -13,6 +13,9 @@ import SchedulePage from "./SchedulePage";
 import HomePage from "./HomePage";
 import RulesPage from "./RulesPage";
 import StatisticsPage from "./StatisticsPage";
+import MyProfile from "./MyProfile";
+import NotFoundPage from "./NotFoundPage";
+
 
 axios.defaults.withCredentials = true
 
@@ -162,6 +165,7 @@ class App extends React.Component {
         this.updateState("user", null)
     }
 
+
     render() {
         return (
             <div className="App">
@@ -184,6 +188,13 @@ class App extends React.Component {
                                                                  inGame={this.state.inGame}/>}/>
                             <Route path={"/GameRules"} element={<RulesPage/>}/>
                             <Route path={"/Statistics"} element={<StatisticsPage teams={this.state.teams}/>}/>
+                            {
+                                this.state.loggedIn &&
+                                <Route path={"/MyProfile"} element={<MyProfile time={this.state.time} matches={this.state.currentRound} updateState={this.updateState} checkCookies={this.checkCookies} user={this.state.user}/>}/>
+                            }
+
+                            <Route path={"/*"} element={<NotFoundPage/>}/>
+
                         </Routes>
                 </BrowserRouter>
             </div>
