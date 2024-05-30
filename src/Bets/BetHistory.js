@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import BetDetailsComponent from "./BetDetailsComponent";
-import TeamGoals from "./TeamGoals";
+import TeamGoals from "../Stat/TeamGoals";
+import {IS_AWAY, IS_HOME, LOSE, WIN} from "../Constants/Constants";
 
-function BetHistory({ forms,type,matches,id,setForms}) {
+function BetHistory({ forms,type,matches,id,setForms,title}) {
 
     const [openFormId, setOpenFormId] = useState(null);
     const {teamNameBet,getTotalRatio,checkFormWin} = BetDetailsComponent();
@@ -44,7 +45,10 @@ function BetHistory({ forms,type,matches,id,setForms}) {
 
 
     return (
-        <div id={id}>
+        <div type={"scroller"} id={id}>
+            <div className={"user-bet-title"}>
+                {title}
+            </div>
             <table id="bet-history-table">
                 <thead>
                 <tr>
@@ -58,17 +62,17 @@ function BetHistory({ forms,type,matches,id,setForms}) {
                 <tbody>
                 {
                     forms.map((form) => (
-                        <>
-                            <tr className="table-bets-row" onClick={() => handleRowClick(form.id)}>
+                        <React.Fragment key={form.id}>
+                            <tr key={form.id} className="table-bets-row" onClick={() => handleRowClick(form.id)}>
                                 <td>{form.id}</td>
                                 {type? <td>{form.round}</td>: "" }
                                 <td>{form.moneyBet}</td>
                                 <td>{getTotalRatio(form.bets)}</td>
                                 {
                                     type?
-                                        <td>{checkFormWin(form)? "W":"L"}</td>
+                                        <td>{checkFormWin(form)? WIN:LOSE}</td>
                                         :
-                                        <td>{updateFormWin(form)? "W":"L"}</td>
+                                        <td>{updateFormWin(form)? WIN:LOSE}</td>
                                 }
 
                             </tr>
@@ -88,7 +92,6 @@ function BetHistory({ forms,type,matches,id,setForms}) {
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            {/* הדפסת רשימת ההימורים כאן */}
                                             {form.bets.map((bet,index) => (
                                                 <tr key={bet.id}>
                                                     <td>{index+1}</td>
@@ -96,7 +99,7 @@ function BetHistory({ forms,type,matches,id,setForms}) {
                                                         type?
                                                             <td>{bet.match.homeTeam.name} - {bet.match.awayTeam.name}</td>
                                                             :
-                                                            <td>{bet.match.homeTeam.name} {getTeamGoals(getBetMatch(bet),true)} - {getTeamGoals(getBetMatch(bet),false)} {bet.match.awayTeam.name}</td>
+                                                            <td>{bet.match.homeTeam.name} {getTeamGoals(getBetMatch(bet),IS_HOME)} - {getTeamGoals(getBetMatch(bet),IS_AWAY)} {bet.match.awayTeam.name}</td>
                                                     }
                                                     <td>{teamNameBet(bet.match,bet.userBet)}</td>
                                                     <td>{bet.ratio}</td>
@@ -114,7 +117,7 @@ function BetHistory({ forms,type,matches,id,setForms}) {
                                     </td>
                                 </tr>
                             }
-                        </>
+                        </React.Fragment>
                     ))
                 }
                 </tbody>

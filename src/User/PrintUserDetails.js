@@ -1,3 +1,5 @@
+import {DIGITS_AFTER_POINT} from "../Constants/Constants";
+
 function PrintUserDetails({user}){
 
     return(
@@ -27,7 +29,7 @@ function PrintUserDetails({user}){
                         {user.email}
                     </td>
                     <td>
-                        {parseFloat(user.balance).toFixed(2)}$
+                        {parseFloat(user.balance).toFixed(DIGITS_AFTER_POINT)}$
                     </td>
                 </tr>
 

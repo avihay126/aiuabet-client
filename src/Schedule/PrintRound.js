@@ -1,5 +1,6 @@
-import TeamGoals from "./TeamGoals";
-import "./Styles/PrintRoundStyle.css";
+import TeamGoals from "../Stat/TeamGoals";
+import "../Styles/PrintRoundStyle.css";
+import {IS_AWAY, IS_HOME} from "../Constants/Constants";
 
 function PrintRound({ round, roundNumber , id }) {
     const { getTeamGoals } = TeamGoals();
@@ -30,7 +31,7 @@ function PrintRound({ round, roundNumber , id }) {
                         <td className="print-round-td">{match.homeTeam.name}</td>
                         <td className="print-round-td">
                             {isTookPlace(round) ? (
-                                <>{getTeamGoals(match, true)}-{getTeamGoals(match, false)}</>
+                                <>{getTeamGoals(match, IS_HOME)}-{getTeamGoals(match, IS_AWAY)}</>
                             ) : (
                                 <span className="print-round-vs">VS</span>
                             )}

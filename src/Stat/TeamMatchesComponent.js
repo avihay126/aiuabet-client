@@ -1,7 +1,8 @@
 
-import "./Styles/PrintRoundStyle.css";
+import "../Styles/PrintRoundStyle.css";
 import TeamGoals from "./TeamGoals";
 import {useEffect} from "react";
+import {IS_AWAY, IS_HOME} from "../Constants/Constants";
 
 
 function TeamMatchesComponent({matches ,setMatches}){
@@ -32,7 +33,7 @@ function TeamMatchesComponent({matches ,setMatches}){
                                 <td className="print-round-td">{match.round}</td>
                                 <td className="print-round-td">{match.homeTeam.name}</td>
                                 <td className="print-round-td">
-                                    {getTeamGoals(match, true)}-{getTeamGoals(match, false)}
+                                    {getTeamGoals(match, IS_HOME)}-{getTeamGoals(match, IS_AWAY)}
                                 </td>
                                 <td className="print-round-td">{match.awayTeam.name}</td>
                             </tr>

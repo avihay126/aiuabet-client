@@ -192,7 +192,6 @@ div[type="update-details"]{
     position: absolute;
     width: 96%;
     left: 2%;
-
     height: 38%;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.75);
@@ -200,6 +199,12 @@ div[type="update-details"]{
     overflow-y: auto;
     overflow-x: auto;
 }
+
+
+
+
+
+
 
 .inner-container-bets tr{
     padding-left: 10px;
@@ -224,4 +229,12 @@ div[type="update-details"]{
     border-radius: 10px;
 
 
+}
+
+.user-bet-title{
+    font-weight: bold;
+    font-style: italic;
+    font-size: larger;
+    font-family: "Comic Sans MS";
+    text-shadow: 2px 2px 4px rgba(245, 144, 144, 0.5);
 }

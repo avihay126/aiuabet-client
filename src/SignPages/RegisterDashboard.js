@@ -1,8 +1,11 @@
-import {useState} from "react";
+import React, {useState} from "react";
 import axios from "axios";
 import Cookies from "universal-cookie";
 import UserValidInputs from "./UserValidInputs";
-import "./Styles/SignDashboard.css";
+import "../Styles/SignDashboard.css";
+import Errors from "../Errors";
+import Tooltip from "../Tooltip";
+import {API_URL} from "../Constants/Constants";
 
 
 function RegisterDashboard(props){
@@ -12,13 +15,13 @@ function RegisterDashboard(props){
     const [password,setPassword] = useState("")
     const [error,setError] = useState(-1)
     const {correctInputs} = UserValidInputs();
-
+    const {showError} = Errors();
 
 
 
     const register = () =>{
         debugger;
-        axios.post("http://localhost:9124/register", undefined,{
+        axios.post(API_URL+"register", undefined,{
             params:{
                 username: username,
                 email: email,
@@ -37,15 +40,7 @@ function RegisterDashboard(props){
         })
     }
 
-    const showError = () => {
-      let text = ""
-      if (error == 4){
-          text = "Username or Email was taken"
-      }else if (error == 5){
-          text = "Invalid inputs!"
-      }
-      return text
-    }
+
 
     const handleClose = () => {
         props.closeRegister();
@@ -61,7 +56,13 @@ function RegisterDashboard(props){
                 <input placeholder={"Email"} type={"email"} value={email} onChange={(event) => {setEmail(event.target.value)}}/>
                 <input placeholder={"Password"}  type={"password"} value={password} onChange={(event) => {setPassword(event.target.value)}}/>
                 <button className={"logButton"} onClick={register} disabled={!correctInputs(email,password,username)}>Sign Up</button>
-
+                {showError(error)}
+                <div>
+                    <Tooltip text="Username: Starts with a capital letter. Min length -- 5.
+Password: starts with a capital letter, must contain at least one digit. Min length -- 8.">
+                        <p>(?)</p>
+                    </Tooltip>
+                </div>
             </div>
 
 

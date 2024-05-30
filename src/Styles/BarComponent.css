@@ -11,17 +11,17 @@
 
 }
 
-#mainBar{
+div[type="bar-part"]{
     display: flex;
     align-items: center;
     position: absolute;
+}
+
+#mainBar{
     right: 20px;
 }
 
 #secondBar{
-    display: flex;
-    align-items: center;
-    position: absolute;
     left: 40px;
 
 }
@@ -32,8 +32,9 @@
     font-size: large;
     font-weight: bold;
     cursor: pointer;
-    border-radius: 15px;
+    clip-path: circle(40% at 50% 50%);
     border: 1px solid white;
+    padding: 15px;
 }
 
 .userDetails:hover{
@@ -62,6 +63,7 @@
     font-weight: bold;
     font-size: x-large;
     border-radius: 8px;
+    padding: 5px;
 }
 
 .item:hover {

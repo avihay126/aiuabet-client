@@ -1,9 +1,10 @@
 import PrintUserDetails from "./PrintUserDetails";
 import {useState} from "react";
-import ValidInputSum from "./ValidInputSum";
+import ValidInputSum from "../Bets/ValidInputSum";
 import axios from "axios";
 import UpdateBalanceComponent from "./UpdateBalanceComponent";
 import UpdateUserDetailsComponent from "./UpdateUserDetailsComponent";
+import {API_URL, DELAY_TIME} from "../Constants/Constants";
 
 function UserDetails({user,updateState}){
 
@@ -40,7 +41,7 @@ function UserDetails({user,updateState}){
     }
 
     const deposit = ()=>{
-        axios.post("http://localhost:9124/deposit-user-balance?balance="+balance).then((response)=>{
+        axios.post(API_URL + "deposit-user-balance?balance="+balance).then((response)=>{
             updateState("user",response.data)
 
             handleMessage("BALANCE UPDATED SUCCESSFULLY!")
@@ -48,7 +49,7 @@ function UserDetails({user,updateState}){
     }
 
     const withdraw = ()=>{
-        axios.post("http://localhost:9124/withdraw-user-balance?balance="+balance).then((response)=>{
+        axios.post(API_URL + "withdraw-user-balance?balance="+balance).then((response)=>{
             if (response.data.balance == user.balance){
                 handleMessage("YOU HAVE NO ENOUGH MONEY!")
             }else {
@@ -67,7 +68,7 @@ function UserDetails({user,updateState}){
         setWithdrawClicked(false)
         setTimeout(()=>{
             setMessage("")
-        },1000)
+        },DELAY_TIME)
     }
 
 

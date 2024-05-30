@@ -1,9 +1,11 @@
+import {MAX_BET_SUM} from "../Constants/Constants";
+
 function ValidInputSum(){
 
     const validInputSum = (event) =>{
         const value = event.target.value;
         if (/^\d+$/.test(value) || value === '') {
-            if(value <= 10000){
+            if(value <= MAX_BET_SUM){
                 return true
             }
 

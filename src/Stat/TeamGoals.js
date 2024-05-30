@@ -1,3 +1,5 @@
+import {IS_AWAY, IS_HOME} from "../Constants/Constants";
+
 function TeamGoals(){
 
 
@@ -26,8 +28,8 @@ function TeamGoals(){
 
     const getWinnerTeam = (match)=>{
         if (match !== null){
-            const homeGoals = getTeamGoals(match,true)
-            const awayGoals = getTeamGoals(match,false)
+            const homeGoals = getTeamGoals(match,IS_HOME)
+            const awayGoals = getTeamGoals(match,IS_AWAY)
             if (homeGoals>awayGoals){
                 return match.homeTeam.name
             }else if (awayGoals>homeGoals){

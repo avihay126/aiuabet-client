@@ -1,4 +1,5 @@
-import TeamGoals from "./TeamGoals";
+import TeamGoals from "../Stat/TeamGoals";
+import {AWAY_WIN, DIGITS_AFTER_POINT, DRAW_RESULT} from "../Constants/Constants";
 
 function BetDetailsComponent(){
 
@@ -6,9 +7,9 @@ function BetDetailsComponent(){
 
     const teamNameBet=(match,userBet)=>{
         let team = match.homeTeam.name;
-        if (userBet===2){
+        if (userBet===AWAY_WIN){
             team = match.awayTeam.name;
-        }else if(userBet===0){
+        }else if(userBet===DRAW_RESULT){
             team ="DRAW"
         }
         return team
@@ -19,7 +20,7 @@ function BetDetailsComponent(){
         for (let i = 0; i < formBets.length; i++) {
             ratio *= formBets[i].ratio;
         }
-        return ratio.toFixed(2);
+        return ratio.toFixed(DIGITS_AFTER_POINT);
     }
 
     const checkFormWin = (form)=>{

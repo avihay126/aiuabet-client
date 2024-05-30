@@ -1,19 +1,21 @@
 import {useEffect, useState} from "react";
 import axios from "axios";
+import {API_URL} from "../Constants/Constants";
 
 
-function TopScorer(){
+function TopScorer(props){
 
     const [players,setPlayers] = useState([]);
 
     useEffect(()=>{
-        axios.get("http://localhost:9124/get-top-scorer").then((response)=>{
+        axios.get(API_URL+"get-top-scorer").then((response)=>{
             setPlayers(response.data);
+
         })
     },[])
 
     return(
-        <div className={"topScorer-container"}>
+        <div type={"table-container"} className={"topScorer-container"}>
 
             {
                 players.length > 0 &&

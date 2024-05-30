@@ -1,4 +1,4 @@
-import './Styles/TablePageStyle.css';
+import '../Styles/TablePageStyle.css';
 
 function TeamNameComponent({teamName}){
     return(

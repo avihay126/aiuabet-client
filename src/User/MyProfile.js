@@ -2,6 +2,7 @@ import {useNavigate} from "react-router-dom";
 import {useEffect} from "react";
 import MyBetsComponent from "./MyBetsComponent";
 import UserDetails from "./UserDetails";
+import {HOME_PAGE_ROUTE} from "../Constants/Constants";
 
 function MyProfile({checkCookies,user,updateState,matches,time}){
 
@@ -12,7 +13,7 @@ function MyProfile({checkCookies,user,updateState,matches,time}){
         checkCookies();
         debugger
         if (user == null){
-            navigate("/")
+            navigate(HOME_PAGE_ROUTE)
         }
     },[])
 

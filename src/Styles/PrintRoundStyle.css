@@ -7,22 +7,7 @@
 }
 
 
-#Schedule-page::-webKit-scrollbar{
-    width: 15px;
-}
-#Schedule-page::-webkit-scrollbar-track{
-    background: #e0dada;
-    border-radius: 8px;
 
-}
-#Schedule-page::-webkit-scrollbar-thumb{
-    background: #333232;
-    border-radius: 8px;
-}
-#Schedule-page::-webkit-scrollbar-thumb:hover{
-    background: #c50202;
-    border-radius: 8px;
-}
 
 
 

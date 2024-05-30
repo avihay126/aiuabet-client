@@ -1,12 +1,13 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import {HOME_PAGE_ROUTE} from "./Constants/Constants";
 
 
 function NotFoundPage() {
     const navigate = useNavigate();
 
     const handleClick = () => {
-        navigate("/");
+        navigate(HOME_PAGE_ROUTE);
     };
 
     return (

@@ -1,7 +1,15 @@
 import { useState } from 'react';
 import './Styles/BarComponent.css';
-import Timer from "./Timer"; // import the CSS file
+import Timer from "./Timer";
 import { useNavigate } from 'react-router-dom';
+import {
+    HOME_PAGE_ROUTE,
+    PROFILE_PAGE_ROUTE,
+    SCHEDULE_PAGE_ROUTE,
+    STAT_PAGE_ROUTE,
+    TABLE_PAGE_ROUTE,
+    RULES_PAGE_ROUTE
+} from "./Constants/Constants"
 
 function BarComponent({user,logOut,loggedIn, openLogin, openRegister , timer , inGame }) {
     const [selectedItem, setSelectedItem] = useState(null);
@@ -11,7 +19,7 @@ function BarComponent({user,logOut,loggedIn, openLogin, openRegister , timer , i
 
     const handleClick = (item) => {
         setSelectedItem(item === selectedItem ? null : item);
-        navigate(`/${item}`)
+        navigate(item)
     };
 
     const handleSignUpClick = () => {
@@ -24,16 +32,16 @@ function BarComponent({user,logOut,loggedIn, openLogin, openRegister , timer , i
 
     const handleLogOutClick = () => {
         logOut();
-        navigate("/")
+        navigate(HOME_PAGE_ROUTE)
     };
     const handleProfileClick = () => {
-        navigate("/MyProfile")
+        navigate(PROFILE_PAGE_ROUTE)
     };
 
     return (
         <div className="bar">
-            <img src={aiuaImage} alt="תמונה"/>
-            <div  id={"mainBar"} >
+            <img id={"bar-image"} onClick={() => handleClick(HOME_PAGE_ROUTE)} src={aiuaImage} alt="תמונה"/>
+            <div type={"bar-part"}  id={"mainBar"} >
                 {
                     loggedIn ?
                         (<div>
@@ -48,12 +56,12 @@ function BarComponent({user,logOut,loggedIn, openLogin, openRegister , timer , i
                 }
 
             </div>
-            <div id={"secondBar"} >
-                <BarItem onClick={() => handleClick("")} selected={selectedItem === ""}>Main</BarItem>
-                <BarItem onClick={() => handleClick("Statistics")} selected={selectedItem === "Statistics"}>Statistics</BarItem>
-                <BarItem onClick={() => handleClick("Table")} selected={selectedItem === "Table"}>Table</BarItem>
-                <BarItem onClick={() => handleClick("Schedule")} selected={selectedItem === "Schedule"}>Schedule</BarItem>
-                <BarItem onClick={() => handleClick("GameRules")} selected={selectedItem === "GameRules"}>GameRules</BarItem>
+            <div type={"bar-part"} id={"secondBar"} >
+                <BarItem onClick={() => handleClick(HOME_PAGE_ROUTE)} selected={selectedItem === HOME_PAGE_ROUTE}>Main</BarItem>
+                <BarItem onClick={() => handleClick(STAT_PAGE_ROUTE)} selected={selectedItem === STAT_PAGE_ROUTE}>Statistics</BarItem>
+                <BarItem onClick={() => handleClick(TABLE_PAGE_ROUTE)} selected={selectedItem === TABLE_PAGE_ROUTE}>Table</BarItem>
+                <BarItem onClick={() => handleClick(SCHEDULE_PAGE_ROUTE)} selected={selectedItem === SCHEDULE_PAGE_ROUTE}>Schedule</BarItem>
+                <BarItem onClick={() => handleClick(RULES_PAGE_ROUTE)} selected={selectedItem === RULES_PAGE_ROUTE}>GameRules</BarItem>
             </div>
             <Timer timer={timer} inGame={inGame}/>
         </div>

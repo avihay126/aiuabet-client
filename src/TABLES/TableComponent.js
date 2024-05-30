@@ -1,11 +1,12 @@
 import React, {useEffect, useState} from 'react';
-import './Styles/TablePageStyle.css';
+import '../Styles/TablePageStyle.css';
 import axios from "axios";
-import TeamMatchesComponent from "./TeamMatchesComponent";
-import TeamNameComponent from "./TeamNameComponent";
-import PrintTeamPlayers from "./PrintTeamPlayers";
+import TeamMatchesComponent from "../Stat/TeamMatchesComponent";
+import TeamNameComponent from "../Stat/TeamNameComponent";
+import PrintTeamPlayers from "../Stat/PrintTeamPlayers";
 import sortTeamForTable from "./SortTeamForTable";
 import SortTeamForTable from "./SortTeamForTable";
+import {API_URL} from "../Constants/Constants";
 
 
 
@@ -37,7 +38,7 @@ function TableComponent(props) {
 
     const getTeamMatches =()=>{
         if (teamSelected!= null){
-            axios.get("http://localhost:9124/get-team-matches?teamId="+teamSelected.id)
+            axios.get(API_URL+"get-team-matches?teamId="+teamSelected.id)
                 .then((response)=>{
 
                     setTeamMatches(sortMatchesByRound(response.data))
@@ -47,9 +48,8 @@ function TableComponent(props) {
     }
     const getTeamPlayers =()=>{
         if (teamSelected!= null){
-            axios.get("http://localhost:9124/get-team-players?teamId=" + teamSelected.id)
+            axios.get(API_URL+"get-team-players?teamId=" + teamSelected.id)
                 .then((response)=>{
-
                     setTeamPlayers(response.data)
                 })
         }
@@ -62,7 +62,7 @@ function TableComponent(props) {
 
     return (
         <div>
-            <div className={teamSelected == null? "bigTable-container": "smallTable-container"} >
+            <div type={"table-container"} className={teamSelected == null? "bigTable-container": "smallTable-container"} >
                 <table className={teamSelected == null? "bigTable": "smallTable"}>
                     <thead>
                     <tr>
@@ -100,7 +100,7 @@ function TableComponent(props) {
             {teamSelected != null && (
                 <div>
                     <TeamMatchesComponent matches={teamMatches} setMatches={setTeamMatches}/>
-                    <div className={"teamName-players-container"}>
+                    <div type={"table-container"} className={"teamName-players-container"}>
                         <TeamNameComponent teamName={teamSelected.name}/>
                         <PrintTeamPlayers players={teamPlayers}/>
                     </div>

@@ -2,16 +2,12 @@
 
 
 .topScorer-container{
-    position: absolute;
+
     width: 30%;
     left: 35%;
     top: 30%;
     height: 50%;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.75);
-    border: 2px solid black;
-    overflow-y: auto;
-    overflow-x: auto;
+
 }
 
 #topScorer-table{
@@ -31,29 +27,21 @@
 
 
 .home-table {
-    font-family: Arial, sans-serif;
-    position: absolute;
+
     width: 25%;
     top: 18%;
     left: 1%;
     height: 80%;
-    border-radius: 10px;
-    overflow-y: auto;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.75);
-    border: 2px solid black;
+
 }
 
 .away-table {
-    font-family: Arial, sans-serif;
-    position: absolute;
+
     width: 25%;
     top: 18%;
     right: 1%;
     height: 80%;
-    border-radius: 10px;
-    overflow-y: auto;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.75);
-    border: 2px solid black;
+
 
 }
 

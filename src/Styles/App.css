@@ -3,20 +3,47 @@
   text-align: center;
   height: 100%;
   width: 100%;
-
   background-image: linear-gradient(to right, #989694 , #f6f3ef, #989694);
-
-
-
 }
 
 
-
+.App-waiting {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #70030c;
+  color: yellow;
+  font-size: 24px;
+  font-family: Arial, sans-serif;
+}
 
 .App-logo {
-  height: 40vmin;
+  animation: App-logo-spin infinite 2s linear;
+  height: 20vmin;
   pointer-events: none;
+  clip-path: circle(40% at 50% 50%);
+
 }
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.App-waiting-text {
+  margin-top: 20px;
+}
+
+
+
+
+
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
@@ -130,14 +157,18 @@
   font-weight: bold;
 }
 
-img {
+#bar-image {
   position: absolute;
   width: 4%;
   height: 100%;
   left: 0px;
   clip-path: circle(40% at 50% 50%);
+  cursor: pointer;
 
 }
+
+
+
 
 
 
@@ -187,3 +218,24 @@ img {
 
 
 
+
+
+
+
+
+div[type="scroller"]::-webKit-scrollbar{
+  width: 10px;
+}
+div[type="scroller"]::-webkit-scrollbar-track{
+  background: #e0dada;
+  border-radius: 8px;
+
+}
+div[type="scroller"]::-webkit-scrollbar-thumb{
+  background: #333232;
+  border-radius: 8px;
+}
+div[type="scroller"]::-webkit-scrollbar-thumb:hover{
+  background: #c50202;
+  border-radius: 8px;
+}

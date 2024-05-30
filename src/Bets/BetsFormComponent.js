@@ -1,9 +1,10 @@
-import "./Styles/BetsStyle.css"
+import "../Styles/BetsStyle.css"
 import BetComponent from "./BetComponent";
 import {useState} from "react";
 import axios from "axios";
 import ValidInputSum from "./ValidInputSum";
 import BetDetailsComponent from "./BetDetailsComponent";
+import {API_URL, DIGITS_AFTER_POINT, MIN_BET} from "../Constants/Constants";
 
 
 function BetsFormComponent({bets ,updateBets, loggedIn, inGame,user,updateState}){
@@ -22,13 +23,12 @@ function BetsFormComponent({bets ,updateBets, loggedIn, inGame,user,updateState}
         }
     }
     const handleButtonDisabled =() =>{
-        return !loggedIn || inputSum < 10 || inGame
+        return !loggedIn || inputSum < MIN_BET || inGame
     }
 
     const sendBet =()=>{
-
         if (user.balance >= inputSum){
-            axios.post("http://localhost:9124/get-user-bet", {
+            axios.post(API_URL+"get-user-bet", {
                 ownerSecret: user.secret,
                 bets: bets,
                 moneyBet:inputSum,
@@ -57,14 +57,14 @@ function BetsFormComponent({bets ,updateBets, loggedIn, inGame,user,updateState}
 
 
     return(
-        <div id={"main-bets-container"}>
-            <div id={"bets-container"}>
+        <div type={"table-container"} id={"main-bets-container"}>
+            <div type={"scroller"} id={"bets-container"}>
                 <h3>YOUR BETS</h3>
                 {
                     bets.map((bet)=>{
 
                         return(
-                            <BetComponent bet={bet} updateBets={updateBets}/>
+                            <BetComponent key={bet.id} bet={bet} updateBets={updateBets}/>
 
                         )
                     })
@@ -89,7 +89,7 @@ function BetsFormComponent({bets ,updateBets, loggedIn, inGame,user,updateState}
                     {
                         inputSum != "" &&
                         <div>
-                            Expected winning: {(getTotalRatio(bets)*inputSum).toFixed(2)}$
+                            Expected winning: {(getTotalRatio(bets)*inputSum).toFixed(DIGITS_AFTER_POINT)}$
                         </div>
                     }
                 </div>

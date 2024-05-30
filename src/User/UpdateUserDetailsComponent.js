@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import axios from 'axios';
-import UserValidInputs from "./UserValidInputs";
+import UserValidInputs from "../SignPages/UserValidInputs";
+import {API_URL, INVALID_PASSWORD, USERNAME_OR_EMAIL_TAKEN} from "../Constants/Constants";
 
 function UpdateUserDetailsComponent({user, updateState,setMessage}) {
     const [username, setUsername] = useState(user.username);
@@ -11,7 +12,7 @@ function UpdateUserDetailsComponent({user, updateState,setMessage}) {
 
     const handleUpdate = () => {
             debugger;
-            axios.post('http://localhost:9124/update-user-details',undefined,{
+            axios.post(API_URL+ 'update-user-details',undefined,{
                 params:{
                     username: username,
                     email: email,
@@ -23,9 +24,9 @@ function UpdateUserDetailsComponent({user, updateState,setMessage}) {
                     if(response.data.success){
                         updateState('user', response.data.user);
                         setMessage("USER DETAILS UPDATED SUCCESSFULLY")
-                    }else if (response.data.errorCode == 3) {
+                    }else if (response.data.errorCode == INVALID_PASSWORD) {
                         setMessage("INVALID PASSWORD!")
-                    }else if (response.data.errorCode == 4){
+                    }else if (response.data.errorCode == USERNAME_OR_EMAIL_TAKEN){
                         setMessage("USERNAME OR EMAIL ALREADY TAKEN")
                     }
 

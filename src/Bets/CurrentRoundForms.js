@@ -1,7 +1,8 @@
 import React, {useState} from "react";
 import BetDetailsComponent from "./BetDetailsComponent";
+import {LOSE, WIN} from "../Constants/Constants";
 
-function CurrentRoundForms({matches,currentForms}){
+function CurrentRoundForms({currentForms}){
 
     const [openFormId, setOpenFormId] = useState(null);
     const {teamNameBet,getTotalRatio,checkFormWin} = BetDetailsComponent();
@@ -35,7 +36,7 @@ function CurrentRoundForms({matches,currentForms}){
                                 <td>{form.id}</td>
                                 <td>{form.moneyBet}</td>
                                 <td>{getTotalRatio(form.bets)}</td>
-                                <td>{checkFormWin(form)? "W":"L"}</td>
+                                <td>{checkFormWin(form)? WIN:LOSE}</td>
                             </tr>
                         )
                     })

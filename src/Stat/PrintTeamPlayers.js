@@ -1,10 +1,11 @@
-import './Styles/TablePageStyle.css';
+import '../Styles/TablePageStyle.css';
 
 function PrintTeamPlayers({players}){
     return(
         <div>
-            <table className={"teamPlayers"}>
+            <table  className={"teamPlayers"}>
                 <caption>Players</caption>
+                <tbody>
                 {
                     players.map((player,index)=>{
                         return(
@@ -16,6 +17,8 @@ function PrintTeamPlayers({players}){
                         )
                     })
                 }
+                </tbody>
+
             </table>
         </div>
     )

@@ -1,21 +1,14 @@
 import React from 'react';
+import {RULES, RULES_IN_ROW} from "./Constants/Constants";
 
 function RulesPage() {
-    // דוגמה למערך חוקים
-    const rules = [
-        "You can send an unlimited number of forms in the same cycle, but it should be noted that you can bet  in each form on one result for each game.",
-        "Cycle time is 90 minutes and the betting selection time is one minute.",
-        "You can set the amount of the bet by selecting the result in each game and at the same time you can see the bets you have selected balloon on the right side and also the calculation of the winning amount if you win.",
-        "Your winning amount consists of the multiplier of the ratios according to the games you have chosen.",
-        "Pay attention! Once the gaming cycle has started it is not possible to change your betting selection, think carefully before submitting the form.",
-        "Remember! The betting experience is an exciting and joyful experience, but note that it does not harm your gaming experience.",
-        // ניתן להוסיף עוד חוקים לדוגמה
-    ];
 
-    // חלוקת המערך לקבוצות של 3 חוקים לכל שורה
+    const rules = RULES;
+
+
     const rows = [];
-    for (let i = 0; i < rules.length; i += 3) {
-        rows.push(rules.slice(i, i + 3));
+    for (let i = 0; i < rules.length; i += RULES_IN_ROW) {
+        rows.push(rules.slice(i, i + RULES_IN_ROW));
     }
 
     return (
