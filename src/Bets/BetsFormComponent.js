@@ -4,7 +4,7 @@ import {useState} from "react";
 import axios from "axios";
 import ValidInputSum from "./ValidInputSum";
 import BetDetailsComponent from "./BetDetailsComponent";
-import {API_URL, DIGITS_AFTER_POINT, MIN_BET} from "../Constants/Constants";
+import {API_URL, DELAY_TIME, DIGITS_AFTER_POINT, MIN_BET} from "../Constants/Constants";
 
 
 function BetsFormComponent({bets ,updateBets, loggedIn, inGame,user,updateState}){
@@ -13,6 +13,7 @@ function BetsFormComponent({bets ,updateBets, loggedIn, inGame,user,updateState}
     const [inputSum, setInputSum] = useState(0);
     const {validInputSum} = ValidInputSum();
     const {getTotalRatio} = BetDetailsComponent();
+    const [message, setMessage] = useState("");
 
 
 
@@ -36,19 +37,26 @@ function BetsFormComponent({bets ,updateBets, loggedIn, inGame,user,updateState}
             })
                 .then((response)=>{
                     if(response.data.success){
-                        debugger
                         setInputSum(0);
                         updateState("user",response.data.user);
                         updateState("bets",[])
+                        handleMessage("Form has been sent successfully!")
                     }else {
-                        alert("You have no enough money")
+                        handleMessage("You have no enough money!")
                     }
             })
         }else {
-            alert("You have no enough money")
+            handleMessage("You have no enough money!")
             updateState("bets",[])
         }
 
+    }
+
+    const handleMessage =(text)=>{
+        setMessage(text)
+        setTimeout(()=>{
+            setMessage("")
+        },DELAY_TIME)
     }
 
 
@@ -85,7 +93,6 @@ function BetsFormComponent({bets ,updateBets, loggedIn, inGame,user,updateState}
                         }
                     </div>
 
-
                     {
                         inputSum != "" &&
                         <div>
@@ -94,6 +101,7 @@ function BetsFormComponent({bets ,updateBets, loggedIn, inGame,user,updateState}
                     }
                 </div>
             }
+            {message}
         </div>
 
     )

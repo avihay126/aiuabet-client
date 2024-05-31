@@ -10,12 +10,12 @@ import {
     TABLE_PAGE_ROUTE,
     RULES_PAGE_ROUTE
 } from "./Constants/Constants"
+import aiuabetlogo from './Styles/aiuabetlogo.jpg'
 
 function BarComponent({user,logOut,loggedIn, openLogin, openRegister , timer , inGame }) {
     const [selectedItem, setSelectedItem] = useState(null);
     const navigate = useNavigate();
 
-    const aiuaImage = require("C:\\Users\\DELL\\WebstormProjects\\aiuabet-client\\src\\Styles\\aiuabetlogo.jpg")
 
     const handleClick = (item) => {
         setSelectedItem(item === selectedItem ? null : item);
@@ -40,7 +40,7 @@ function BarComponent({user,logOut,loggedIn, openLogin, openRegister , timer , i
 
     return (
         <div className="bar">
-            <img id={"bar-image"} onClick={() => handleClick(HOME_PAGE_ROUTE)} src={aiuaImage} alt="תמונה"/>
+            <img id={"bar-image"} onClick={() => handleClick(HOME_PAGE_ROUTE)} src={aiuabetlogo} alt="logo"/>
             <div type={"bar-part"}  id={"mainBar"} >
                 {
                     loggedIn ?
