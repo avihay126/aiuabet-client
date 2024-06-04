@@ -16,11 +16,13 @@ div[type="bar-part"]{
 }
 
 #mainBar{
-    right: 20px;
+    right: 1%;
+
 }
 
 #secondBar{
-    left: 40px;
+    left: 3%;
+
 
 }
 .userDetails{

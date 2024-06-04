@@ -2,7 +2,7 @@
 
     right: 1%;
     width: 20%;
-    top: 15%;
+    margin-top: 3%;
     background-image: linear-gradient(to right, #989694 , #f6f3ef, #989694);
     height: 70%;
 
@@ -23,7 +23,6 @@
 
 
 .bet{
-
     background-color: black;
     color: white;
     border-radius: 5px;

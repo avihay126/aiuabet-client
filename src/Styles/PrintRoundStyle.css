@@ -142,12 +142,11 @@
 
 #currentRound-container{
     position: absolute;
-    top: 15%;
+    margin-top: 3%;
     right: 22%;
     background-image: linear-gradient(to right, #989694 , #f6f3ef, #989694);
     width: 50%;
     height: 70%;
-
     overflow-y: auto;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.75);
