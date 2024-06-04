@@ -2,7 +2,7 @@ import '../Styles/TablePageStyle.css';
 
 function PrintTeamPlayers({players}){
     return(
-        <div>
+
             <table  className={"teamPlayers"}>
                 <caption>Players</caption>
                 <tbody>
@@ -20,7 +20,7 @@ function PrintTeamPlayers({players}){
                 </tbody>
 
             </table>
-        </div>
+
     )
 }
 

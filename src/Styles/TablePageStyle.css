@@ -1,7 +1,7 @@
 div[type="table-container"]{
     font-family: Arial, sans-serif;
     overflow-x: auto;
-    position: absolute;
+    position: fixed;
     border-radius: 10px;
     overflow-y: auto;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.75);
@@ -12,20 +12,22 @@ div[type="table-container"]{
 .bigTable-container {
     width: 98%;
     left: 1%;
-    top: 9%;
+
     height: 90%;
+
 }
 
 
 .smallTable-container {
     width: 50%;
-    top: 9%;
+
     left: 0.5%;
     height: 90%;
 }
 
 
 .main-minTable-container {
+
     width: 25%;
     top: 10%;
     left: 1%;
@@ -95,9 +97,8 @@ td {
 .teamName-players-container{
 
     right: 10px;
-    width: 350px;
+    width: 23%;
     height: 90%;
-    top: 9%;
     background: linear-gradient(to bottom , rgba(147, 142, 142, 0.75), white, rgba(147, 142, 142, 0.75));
     color: white;
 }
@@ -120,7 +121,7 @@ td {
 .teamPlayers {
     position: fixed;
     top: 27%;
-    width: 350px;
+    width: 23%;
     padding: 10px;
     background-color: #1f1f1f;
     border: 2px solid #ccc;
