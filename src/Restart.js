@@ -11,7 +11,7 @@ function Restart() {
         })
     };
 
-    const aiuaImage = require("C:\\Users\\DELL\\WebstormProjects\\aiuabet-client\\src\\Styles\\aiuabetlogo.jpg")
+    const aiuaImage = require("./Styles/aiuabetlogo.jpg")
 
     return (
         <div className="restart-container">
